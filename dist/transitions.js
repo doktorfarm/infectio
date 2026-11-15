@@ -1,0 +1,2 @@
+function sync(){let off=matchMedia('(prefers-reduced-motion: reduce)').matches;document.documentElement.classList.toggle('transition-off',off)}
+sync();addEventListener('pageshow',sync);addEventListener('storage',sync);document.addEventListener('click',e=>{if(e.target.closest('#motion,#motion-toggle'))queueMicrotask(sync)});matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',sync);

@@ -1,0 +1,138 @@
+/* Dashboard under control. Loaded last, after refinement.css.
+   One layout (learning on the left, status on the right), one card style, one accent. */
+
+/* ---- layout ---- */
+.dashboard-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,350px);gap:24px;align-items:start}
+.dash-main,.dash-side{display:grid;gap:20px;min-width:0}
+.dash-side{gap:16px}
+.dash-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
+.dash-tools .widget{padding:20px}
+.dash-main>*,.dash-side>*{grid-column:auto!important;grid-row:auto!important}
+
+/* ---- top bar: brand, toggle and search on the left, profile on the right ---- */
+.app-topbar{justify-content:flex-start}
+.app-topbar .profile-pill{margin-left:auto}
+
+/* ---- title and primary action ---- */
+.dash-title-row>div{display:block}
+.dash-title-row{align-items:flex-end;margin-bottom:20px}
+.dash-title-row h1{font-size:clamp(28px,2.6vw,36px);line-height:1.1}
+.dash-sub{margin:8px 0 0;font-size:14px;color:#4C5A7C}
+.dashboard-actions{margin-bottom:24px}
+.shell .dashboard-actions .primary{min-height:48px;padding:12px 22px;font-size:15px;border-radius:12px}
+
+/* ---- question cards: the question is the headline, the topic is a quiet label ---- */
+.board-tabs{margin-bottom:16px}
+.task-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.task-card{border:1px solid #DEE3EE;border-radius:18px;background:#FFFFFF;transition:border-color .2s,box-shadow .2s,transform .2s}
+.task-card:hover{border-color:#B2C1E4;box-shadow:0 14px 32px -24px #264790;transform:translateY(-2px)}
+.task-topic{margin:16px 20px 0;font-size:12px;line-height:1.4;color:#607093}
+.task-card h2.task-question{margin:6px 20px 18px;min-height:0;font-size:19px;line-height:1.35;color:#161D2D;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.task-tags{margin:16px 20px 0}
+.task-footer{border-top:1px solid #E7EBF5}
+.task-footer>span{font-size:12px}
+.board-all{margin-top:12px;font-size:13px}
+
+/* ---- session: three tiles instead of three long bars ---- */
+.session-widget .widget-head{margin-bottom:14px}
+.session-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:0}
+.shell .session-options button.session-tile{position:relative;flex-direction:column;align-items:flex-start!important;justify-content:flex-start!important;gap:14px;min-height:140px;padding:18px 16px;text-align:left;border-radius:14px}
+.shell .session-options button.session-tile{white-space:normal;min-width:0;width:100%}
+.session-tile>span{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;max-width:100%;text-align:left}
+.session-tile b{font-size:15px;font-weight:650}
+.session-tile small{font-size:12px;line-height:1.4;font-weight:400;color:#5A6681}
+.session-tile>em{position:absolute;top:14px;right:14px;font-style:normal;font-size:12px;font-weight:600;color:#3A4C75;background:#E8EDF9;border-radius:20px;padding:2px 9px}
+.session-tile:hover>em{background:#FFFFFF}
+
+/* ---- side column: quiet white cards, no loud gradients ---- */
+.dash-side .widget{padding:20px}
+.dash-side .widget-head{margin-bottom:14px}
+.dash-side .widget-head h2{font-size:18px}
+.progress-message{padding:18px}
+.progress-message>strong{font-size:36px}
+.progress{height:8px;border-radius:8px;background:#E5E9F4;overflow:hidden;margin-top:14px}
+.progress span{display:block;height:100%;border-radius:8px;min-width:0}
+.progress-bubbles{margin-top:14px}
+.progress-footer{margin-top:14px}
+
+.calendar-widget .widget-head{margin-bottom:12px}
+.weekdays{margin:12px 0 8px}
+.calendar-grid,.weekdays{gap:4px}
+.calendar-day{aspect-ratio:auto;height:34px;max-height:none;border-radius:10px;font-size:12px}
+.calendar-day.today{background:#D7E3FD;color:#203B78;font-weight:700}
+.calendar-day.due-day{background:#FFFFFF;border-color:#90A6DA}
+.calendar-caption{min-height:0;margin-top:12px;font-size:12px}
+.shell .calendar-plan{margin-top:10px;min-height:40px}
+.plan-link{padding:8px 0;font-size:13px}
+
+.timer-widget,.notes-widget{background:#FFFFFF;box-shadow:none;flex:none}
+.timer-widget .widget-head{margin-bottom:10px}
+.timer-controls output{font-size:34px;letter-spacing:-1.5px;color:#1C2438}
+.timer-widget>span{color:#5A6681;margin-top:8px;font-size:12px}
+.shell .timer-widget .widget-head button{background:#FFFFFF}
+.notes-widget textarea{width:100%;min-height:88px;height:88px;padding:10px 12px;border:1px solid #DEE3EE;border-radius:12px;background:#FAFAFC;color:#1C2438}
+.notes-widget textarea::placeholder{color:#707FA2}
+.notes-widget>span{color:#607093;font-size:12px;margin-top:8px}
+
+.dash-disclaimer{margin-top:8px;padding-top:20px;font-size:12px;color:#607093}
+
+/* ---- gentle arrival (calm: opacity and 8 px only) ---- */
+@keyframes dash-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes bar-grow{from{width:0}}
+.dash-title-row,.dashboard-actions,.dash-main>*,.dash-side>*{animation:dash-in .5s cubic-bezier(.2,.7,.2,1) both}
+.dashboard-actions{animation-delay:.05s}
+.dash-main>*:nth-child(1),.dash-side>*:nth-child(1){animation-delay:.1s}
+.dash-main>*:nth-child(2),.dash-side>*:nth-child(2){animation-delay:.18s}
+.dash-main>*:nth-child(3){animation-delay:.26s}
+.progress span{animation:bar-grow 1s .35s cubic-bezier(.2,.7,.2,1) both}
+
+/* ---- narrower screens ---- */
+@media(max-width:1180px){
+ .dashboard-grid{grid-template-columns:minmax(0,1fr)}
+ .dash-side{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+}
+@media(max-width:900px){
+ .session-options{grid-template-columns:1fr}
+ .shell .session-options button.session-tile{min-height:0;flex-direction:row;align-items:center!important;gap:14px;padding:14px 16px}
+ .session-tile>em{position:static;margin-left:auto}
+}
+@media(max-width:760px){
+ .dash-title-row{align-items:flex-start}
+ .task-grid{grid-template-columns:1fr}
+ .dash-side,.dash-tools{grid-template-columns:1fr}
+ .dash-side>*{grid-column:1!important;grid-row:auto!important}
+ .utility-stack{display:contents}
+ .dash-title-row h1{font-size:28px}
+}
+@media(prefers-reduced-motion:reduce){
+ .dash-title-row,.dashboard-actions,.dash-main>*,.dash-side>*,.progress span,.task-card{animation:none!important;transition:none!important}
+}
+
+/* ---- card header: kind label on the left, one clearly named action on the right ---- */
+.shell .task-open{width:auto;min-height:32px!important;padding:4px 10px!important;margin-left:auto;font-size:12px;font-weight:500;color:#3A4C75;border-color:transparent!important;background:transparent!important}
+.shell .task-open:hover:not(:disabled){background:#E8EDF9!important;border-color:transparent!important}
+.task-tag{font-size:12px;padding:4px 10px}
+.task-footer>span{font-size:12px;color:#607093}
+
+/* ---- end of session ---- */
+.empty .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:20px}
+.empty .end-link{padding:10px 14px;color:#2B3857;font-weight:600}
+.task-grid:has(.task-card:only-child){grid-template-columns:minmax(0,1fr)}
+
+/* ---- sync card ---- */
+.sync-card{margin:16px 0;max-width:640px}
+.sync-code{font:600 22px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;padding:14px 16px;background:#EEF3FF;border-radius:12px;user-select:all;word-break:break-all}
+.sync-card input{flex:1;min-width:0;min-height:44px;border:1px solid #A1AFD0;border-radius:10px;padding:10px;font:inherit;text-transform:uppercase}
+.sync-card .actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.sync-card label{display:block;margin-top:18px;font-weight:600;font-size:14px}
+.sync-qr{width:176px;padding:8px;background:#FFFFFF;border:1px solid #DEE3EE;border-radius:12px;margin:14px 0 6px;line-height:0}
+.sync-qr svg{width:100%;height:auto;display:block}
+.sync-hint{margin:6px 0 0;font-size:13px;color:#4C5A7C}
+
+/* ---- quiz: czytelne odpowiedzi A–E ---- */
+.shell .option{justify-content:flex-start;align-items:flex-start;text-align:left;font-weight:500;line-height:1.45;color:#1C2438}
+.shell .option span{flex:1;text-align:left}
+.shell .option:disabled{opacity:1;cursor:default}
+.shell .option:disabled:not(.correct):not(.wrong){opacity:.55}
+.shell .option.correct{background:#E2F0E7!important;border-color:#6FAE86!important}
+.shell .option.wrong{background:#FAE1E7!important;border-color:#D98A9C!important}

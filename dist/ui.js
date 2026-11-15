@@ -1,0 +1,4 @@
+const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export const loadingState = () => '<section class="ui-state" role="status" aria-label="Ładowanie"><div class="skeleton skeleton-title"></div><div class="skeleton skeleton-line"></div><div class="skeleton skeleton-panel"></div><p>Ładowanie materiałów…</p></section>';
+export const emptyState = (title, description, action, id) => `<section class="ui-state empty"><span class="state-icon" aria-hidden="true">▤</span><h2>${escape(title)}</h2><p>${escape(description)}</p><button class="primary" id="${escape(id)}">${escape(action)}</button></section>`;
+export const errorState = message => `<section class="ui-state empty" role="alert"><span class="state-icon" aria-hidden="true">!</span><h1>Nie udało się wczytać materiałów</h1><p>${escape(message)}</p><button class="primary" id="retry-load">Spróbuj ponownie</button></section>`;

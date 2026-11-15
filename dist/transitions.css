@@ -1,0 +1,10 @@
+@view-transition{navigation:auto}
+.brand{view-transition-name:infectio-brand}
+@keyframes page-in{from{opacity:0;transform:translateY(12px) scale(.995)}to{opacity:1;transform:none}}
+@keyframes page-out{to{opacity:0;transform:translateY(-8px)}}
+::view-transition-old(root){animation:page-out .18s ease both}
+::view-transition-new(root){animation:page-in .32s cubic-bezier(.22,1,.36,1) both}
+::view-transition-group(infectio-brand){animation-duration:.32s}
+html.transition-off::view-transition-old(root),html.transition-off::view-transition-new(root),html.transition-off::view-transition-group(infectio-brand){animation:none!important}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root),::view-transition-group(infectio-brand){animation:none!important}}
+.brand{view-transition-name:none}.navbar .brand,.app-topbar .brand{view-transition-name:infectio-brand}
