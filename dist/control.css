@@ -136,3 +136,8 @@
 .shell .option:disabled:not(.correct):not(.wrong){opacity:.55}
 .shell .option.correct{background:#E2F0E7!important;border-color:#6FAE86!important}
 .shell .option.wrong{background:#FAE1E7!important;border-color:#D98A9C!important}
+
+/* ---- mieszanie ---- */
+.shuffle-toggle{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:14px;color:#2B3857;cursor:pointer}
+.shuffle-toggle input{width:20px;height:20px;accent-color:#0758A2;flex:none}
+.session-tile.mix-tile{background:#EEF3FF}
